@@ -37,9 +37,11 @@ export default class HolbertonCourse {
   }
 
   set students(studentsToBeSet) {
-    if ((typeof studentsToBeSet === 'object')
-            && (typeof studentsToBeSet[0] === 'string')) {
+    if ((typeof studentsToBeSet === 'object') && 
+        (studentsToBeSet.every((student) => typeof student === 'string'))) {
       this._students = studentsToBeSet;
+    } else {
+      throw TypeError("Students must be and array of strings")
     }
   }
 }
